@@ -1,1 +1,28 @@
-<p>dashboard works!</p>
+<p> dashboard works!</p>
+
+<div>
+<h1 class="text-3xl font-bold underline">Register Form</h1>
+
+<form class="example-form" #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Name:</mat-label>
+    <input type="text" matInput  name="name " ngModel required #name="ngModel">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Email:</mat-label>
+    <input type="email" matInput  name="email " ngModel required #email="ngModel">
+  </mat-form-field>
+
+  <mat-form-field>
+  <mat-label>Favorite food</mat-label>
+  <mat-select name="gender" ngModel>
+    @for (gen of Gender; track gen) {
+      <mat-option [value]="gen.value">{{gen.viewValue}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>
+ <button type="submit" matButton="outlined"[disabled]="userForm.invalid">Basic</button>
+
+</form>
