@@ -27,4 +27,6 @@ children:[
 
 //Route Parameters Example
 {path:'earn-tax/:id',loadComponent: () => import('./components/earn-tax/earn-tax.component').then(m=>m.EarnTaxComponent) },
+{path:'reactiveForm', loadComponent:() => import('./components/reactive-form/reactive-form.component').then(m=>m.ReactiveFormComponent)},
+
 ];

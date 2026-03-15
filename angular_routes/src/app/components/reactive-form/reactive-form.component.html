@@ -1,0 +1,114 @@
+<p>reactive-form works!</p>
+
+
+<h2 class="example-h2">Form Config</h2>
+
+    <section class="example-section">
+      <mat-checkbox class="example-margin" [(ngModel)]="checked">ReactiveChecked</mat-checkbox>
+      <mat-checkbox class="example-margin" [(ngModel)]="indeterminate">UpdateReactiveFrom</mat-checkbox>
+    </section>
+@if (checked()) {
+  <form class="example-form" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name:</mat-label>
+      <input type="text" matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>NickName:</mat-label>
+      <input type="text" matInput formControlName="nickname" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Phone:</mat-label>
+      <input type="tel" matInput formControlName="phone" required>
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email:</mat-label>
+      <input type="email" matInput formControlName="email" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Favorite food</mat-label>
+      <mat-select  formControlName="gender">
+        @for (gen of Gender; track gen) {
+        <mat-option [value]="gen.value">{{gen.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <button type="submit" matButton="outlined">Submit</button>
+
+</form>
+}
+@else if(indeterminate()){
+
+<form class="example-form" [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Name:</mat-label>
+      <input type="text" matInput formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Username:</mat-label>
+      <input type="text" matInput formControlName="username" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email:</mat-label>
+      <input type="email" matInput formControlName="email" required>
+    </mat-form-field>
+
+    <div formGroupName="address">
+      <h3>Address</h3>
+      <mat-form-field class="example-full-width">
+        <mat-label>Street:</mat-label>
+        <input type="text" matInput formControlName="street" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Suite:</mat-label>
+        <input type="text" matInput formControlName="suite" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>City:</mat-label>
+        <input type="text" matInput formControlName="city" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Zipcode:</mat-label>
+        <input type="text" matInput formControlName="zipcode" required><span>{{ totalZipCount() }}</span>
+      </mat-form-field>
+
+      <div formGroupName="geo">
+        <h4>Geo</h4>
+        <mat-form-field class="example-full-width">
+          <mat-label>Latitude:</mat-label>
+          <input type="text" matInput formControlName="lat" required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Longitude:</mat-label>
+          <input type="text" matInput formControlName="lng" required>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </div>
+
+  <button type="submit" matButton="outlined">Submit</button>
+
+</form>
+
+
+
+}
+
+
